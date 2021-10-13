@@ -31,18 +31,8 @@
     
 
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/blog/atom.xml" title="先生你好" type="application/atom+xml">
-<link rel="stylesheet" href="/blog/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
-
-
-   <style>
-    body{
-       background-image: url(https://source.unsplash.com/random/1000*200);
-       background-repeat:no-repeat;
-       background-size:cover;
-       background-attachment:fixed;
-    }
-</style>
 
 
 
@@ -534,23 +524,25 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/blog/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h3 id="安装feed插件"><a href="#安装feed插件" class="headerlink" title="安装feed插件"></a>安装feed插件</h3><p>1.输入指令: <code>npm install hexo-generator-feed</code><br>2.等待安装完成</p>
-<h3 id="添加配置文件"><a href="#添加配置文件" class="headerlink" title="添加配置文件"></a>添加配置文件</h3><h4 id="1-打开hexo目录下配置文件-config-yml，末尾添加以下配置"><a href="#1-打开hexo目录下配置文件-config-yml，末尾添加以下配置" class="headerlink" title="1.打开hexo目录下配置文件_config.yml，末尾添加以下配置"></a>1.打开hexo目录下配置文件_config.yml，末尾添加以下配置</h4><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># Extensions</span>
-<span class="token comment" spellcheck="true">## Plugins: http://hexo.io/plugins/</span>
-<span class="token comment" spellcheck="true">#RSS订阅</span>
+<h3 id="添加配置文件"><a href="#添加配置文件" class="headerlink" title="添加配置文件"></a>添加配置文件</h3><h4 id="1-打开hexo目录下配置文件-config-yml，末尾添加以下配置"><a href="#1-打开hexo目录下配置文件-config-yml，末尾添加以下配置" class="headerlink" title="1.打开hexo目录下配置文件_config.yml，末尾添加以下配置"></a>1.打开hexo目录下配置文件_config.yml，末尾添加以下配置</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Extensions</span>
+<span class="token comment">## Plugins: http://hexo.io/plugins/</span>
+<span class="token comment">#RSS订阅</span>
 plugin:
 - hexo-generator-feed
-<span class="token comment" spellcheck="true">#Feed Atom</span>
+<span class="token comment">#Feed Atom</span>
 feed:
 type: atom
 path: atom.xml
-limit: 20
-</code></pre>
+limit: <span class="token number">20</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>type</strong>: RSS的类型(atom/rss2)</li>
 <li><strong>path</strong>: 文件路径，默认是 atom.xml/rss2.xml</li>
@@ -642,9 +634,6 @@ limit: 20
                     <link rel="stylesheet" type="text/css" href="/blog/libs/share/css/share.min.css">
 <div id="article-share">
 
-    
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/blog/libs/share/js/social-share.min.js"></script>
     
 
     
@@ -1104,60 +1093,6 @@ limit: 20
 
     <footer class="page-footer bg-color">
     
-        <link rel="stylesheet" href="/blog/libs/aplayer/APlayer.min.css">
-<style>
-    .aplayer .aplayer-lrc p {
-        
-        display: none;
-        
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px !important;
-    }
-
-    .aplayer .aplayer-lrc p.aplayer-lrc-current {
-        
-        display: none;
-        
-        font-size: 15px;
-        color: #42b983;
-    }
-
-    
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
-        left: -66px !important;
-    }
-
-    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
-        left: 0px !important;
-    }
-
-    
-</style>
-<div class="">
-    
-    <div class="row">
-        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="netease"
-                   type="playlist"
-                   id="503838841"
-                   fixed='true'
-                   autoplay='false'
-                   theme='#42b983'
-                   loop='all'
-                   order='random'
-                   preload='auto'
-                   volume='0.7'
-                   list-folded='true'
-        >
-        </meting-js>
-    </div>
-</div>
-
-<script src="/blog/libs/aplayer/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-
-    
     <div class="container row center-align" style="margin-bottom: 0px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
@@ -1171,7 +1106,7 @@ limit: 20
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">2.8k</span>&nbsp;字
+                class="white-color">3.3k</span>&nbsp;字
             
             
             
