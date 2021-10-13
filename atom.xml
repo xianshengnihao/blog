@@ -3,11 +3,11 @@
   <title>先生你好</title>
   
   <subtitle>先生你好の博客</subtitle>
-  <link href="https://gitee.com/haoweige/my-Blog.io/atom.xml" rel="self"/>
+  <link href="https://haoweige.gitee.io/my-blog.io/atom.xml" rel="self"/>
   
-  <link href="https://gitee.com/haoweige/my-Blog.io/"/>
+  <link href="https://haoweige.gitee.io/my-blog.io/"/>
   <updated>2021-10-13T08:36:58.140Z</updated>
-  <id>https://gitee.com/haoweige/my-Blog.io/</id>
+  <id>https://haoweige.gitee.io/my-blog.io/</id>
   
   <author>
     <name>先生你好</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>BeanDefinition详解</title>
-    <link href="https://gitee.com/haoweige/my-Blog.io/posts/b7e0d088.htm"/>
-    <id>https://gitee.com/haoweige/my-Blog.io/posts/b7e0d088.htm</id>
+    <link href="https://haoweige.gitee.io/my-blog.io/posts/b7e0d088.htm"/>
+    <id>https://haoweige.gitee.io/my-blog.io/posts/b7e0d088.htm</id>
     <published>2021-10-13T08:36:57.000Z</published>
     <updated>2021-10-13T08:36:58.140Z</updated>
     
@@ -31,8 +31,8 @@
   
   <entry>
     <title>二、xml方式初始话Spring容器详解</title>
-    <link href="https://gitee.com/haoweige/my-Blog.io/posts/68eba84b.htm"/>
-    <id>https://gitee.com/haoweige/my-Blog.io/posts/68eba84b.htm</id>
+    <link href="https://haoweige.gitee.io/my-blog.io/posts/68eba84b.htm"/>
+    <id>https://haoweige.gitee.io/my-blog.io/posts/68eba84b.htm</id>
     <published>2021-10-10T11:22:53.000Z</published>
     <updated>2021-10-13T09:08:24.926Z</updated>
     
@@ -46,21 +46,21 @@
     
     
     
-    <category term="Spring" scheme="https://gitee.com/haoweige/my-Blog.io/categories/Spring/"/>
+    <category term="Spring" scheme="https://haoweige.gitee.io/my-blog.io/categories/Spring/"/>
     
-    <category term="源码" scheme="https://gitee.com/haoweige/my-Blog.io/categories/Spring/%E6%BA%90%E7%A0%81/"/>
+    <category term="源码" scheme="https://haoweige.gitee.io/my-blog.io/categories/Spring/%E6%BA%90%E7%A0%81/"/>
     
     
-    <category term="Spring容器初始化" scheme="https://gitee.com/haoweige/my-Blog.io/tags/Spring%E5%AE%B9%E5%99%A8%E5%88%9D%E5%A7%8B%E5%8C%96/"/>
+    <category term="Spring容器初始化" scheme="https://haoweige.gitee.io/my-blog.io/tags/Spring%E5%AE%B9%E5%99%A8%E5%88%9D%E5%A7%8B%E5%8C%96/"/>
     
-    <category term="xml方式" scheme="https://gitee.com/haoweige/my-Blog.io/tags/xml%E6%96%B9%E5%BC%8F/"/>
+    <category term="xml方式" scheme="https://haoweige.gitee.io/my-blog.io/tags/xml%E6%96%B9%E5%BC%8F/"/>
     
   </entry>
   
   <entry>
     <title>一、Spring入口和xml解析</title>
-    <link href="https://gitee.com/haoweige/my-Blog.io/posts/374bf9da.htm"/>
-    <id>https://gitee.com/haoweige/my-Blog.io/posts/374bf9da.htm</id>
+    <link href="https://haoweige.gitee.io/my-blog.io/posts/374bf9da.htm"/>
+    <id>https://haoweige.gitee.io/my-blog.io/posts/374bf9da.htm</id>
     <published>2021-10-08T09:28:05.000Z</published>
     <updated>2021-10-10T12:37:11.574Z</updated>
     
@@ -75,23 +75,23 @@
     
     
     
-    <category term="Spring" scheme="https://gitee.com/haoweige/my-Blog.io/categories/Spring/"/>
+    <category term="Spring" scheme="https://haoweige.gitee.io/my-blog.io/categories/Spring/"/>
     
-    <category term="源码" scheme="https://gitee.com/haoweige/my-Blog.io/categories/Spring/%E6%BA%90%E7%A0%81/"/>
+    <category term="源码" scheme="https://haoweige.gitee.io/my-blog.io/categories/Spring/%E6%BA%90%E7%A0%81/"/>
     
     
-    <category term="Spring源码" scheme="https://gitee.com/haoweige/my-Blog.io/tags/Spring%E6%BA%90%E7%A0%81/"/>
+    <category term="Spring源码" scheme="https://haoweige.gitee.io/my-blog.io/tags/Spring%E6%BA%90%E7%A0%81/"/>
     
-    <category term="Spring简介" scheme="https://gitee.com/haoweige/my-Blog.io/tags/Spring%E7%AE%80%E4%BB%8B/"/>
+    <category term="Spring简介" scheme="https://haoweige.gitee.io/my-blog.io/tags/Spring%E7%AE%80%E4%BB%8B/"/>
     
-    <category term="Spring源码下载" scheme="https://gitee.com/haoweige/my-Blog.io/tags/Spring%E6%BA%90%E7%A0%81%E4%B8%8B%E8%BD%BD/"/>
+    <category term="Spring源码下载" scheme="https://haoweige.gitee.io/my-blog.io/tags/Spring%E6%BA%90%E7%A0%81%E4%B8%8B%E8%BD%BD/"/>
     
   </entry>
   
   <entry>
     <title>Hexo＆matery个性化修改</title>
-    <link href="https://gitee.com/haoweige/my-Blog.io/posts/21558651.htm"/>
-    <id>https://gitee.com/haoweige/my-Blog.io/posts/21558651.htm</id>
+    <link href="https://haoweige.gitee.io/my-blog.io/posts/21558651.htm"/>
+    <id>https://haoweige.gitee.io/my-blog.io/posts/21558651.htm</id>
     <published>2021-10-07T14:11:19.000Z</published>
     <updated>2021-10-10T12:37:11.568Z</updated>
     
@@ -105,19 +105,19 @@
     
     
     
-    <category term="Hexo" scheme="https://gitee.com/haoweige/my-Blog.io/categories/Hexo/"/>
+    <category term="Hexo" scheme="https://haoweige.gitee.io/my-blog.io/categories/Hexo/"/>
     
-    <category term="matery" scheme="https://gitee.com/haoweige/my-Blog.io/categories/Hexo/matery/"/>
+    <category term="matery" scheme="https://haoweige.gitee.io/my-blog.io/categories/Hexo/matery/"/>
     
     
-    <category term="matery个性化修改" scheme="https://gitee.com/haoweige/my-Blog.io/tags/matery%E4%B8%AA%E6%80%A7%E5%8C%96%E4%BF%AE%E6%94%B9/"/>
+    <category term="matery个性化修改" scheme="https://haoweige.gitee.io/my-blog.io/tags/matery%E4%B8%AA%E6%80%A7%E5%8C%96%E4%BF%AE%E6%94%B9/"/>
     
   </entry>
   
   <entry>
     <title>第三方平台管理端</title>
-    <link href="https://gitee.com/haoweige/my-Blog.io/posts/b62742e1.htm"/>
-    <id>https://gitee.com/haoweige/my-Blog.io/posts/b62742e1.htm</id>
+    <link href="https://haoweige.gitee.io/my-blog.io/posts/b62742e1.htm"/>
+    <id>https://haoweige.gitee.io/my-blog.io/posts/b62742e1.htm</id>
     <published>2021-10-07T13:48:35.000Z</published>
     <updated>2021-10-10T12:37:11.575Z</updated>
     
@@ -132,17 +132,17 @@
     
     
     
-    <category term="加密文章" scheme="https://gitee.com/haoweige/my-Blog.io/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/"/>
+    <category term="加密文章" scheme="https://haoweige.gitee.io/my-blog.io/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/"/>
     
     
-    <category term="加密文章" scheme="https://gitee.com/haoweige/my-Blog.io/tags/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/"/>
+    <category term="加密文章" scheme="https://haoweige.gitee.io/my-blog.io/tags/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/"/>
     
   </entry>
   
   <entry>
     <title>文章加密测试</title>
-    <link href="https://gitee.com/haoweige/my-Blog.io/posts/26ea2038.htm"/>
-    <id>https://gitee.com/haoweige/my-Blog.io/posts/26ea2038.htm</id>
+    <link href="https://haoweige.gitee.io/my-blog.io/posts/26ea2038.htm"/>
+    <id>https://haoweige.gitee.io/my-blog.io/posts/26ea2038.htm</id>
     <published>2021-10-07T13:45:28.000Z</published>
     <updated>2021-10-10T12:37:11.572Z</updated>
     
@@ -157,17 +157,17 @@
     
     
     
-    <category term="加密文章" scheme="https://gitee.com/haoweige/my-Blog.io/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/"/>
+    <category term="加密文章" scheme="https://haoweige.gitee.io/my-blog.io/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/"/>
     
     
-    <category term="加密文章测试" scheme="https://gitee.com/haoweige/my-Blog.io/tags/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0%E6%B5%8B%E8%AF%95/"/>
+    <category term="加密文章测试" scheme="https://haoweige.gitee.io/my-blog.io/tags/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0%E6%B5%8B%E8%AF%95/"/>
     
   </entry>
   
   <entry>
     <title>添加Rss订阅</title>
-    <link href="https://gitee.com/haoweige/my-Blog.io/posts/ebe2c743.htm"/>
-    <id>https://gitee.com/haoweige/my-Blog.io/posts/ebe2c743.htm</id>
+    <link href="https://haoweige.gitee.io/my-blog.io/posts/ebe2c743.htm"/>
+    <id>https://haoweige.gitee.io/my-blog.io/posts/ebe2c743.htm</id>
     <published>2021-10-07T13:02:25.000Z</published>
     <updated>2021-10-10T12:37:11.573Z</updated>
     
@@ -181,17 +181,17 @@
     
     
     
-    <category term="Hexo" scheme="https://gitee.com/haoweige/my-Blog.io/categories/Hexo/"/>
+    <category term="Hexo" scheme="https://haoweige.gitee.io/my-blog.io/categories/Hexo/"/>
     
     
-    <category term="Rss" scheme="https://gitee.com/haoweige/my-Blog.io/tags/Rss/"/>
+    <category term="Rss" scheme="https://haoweige.gitee.io/my-blog.io/tags/Rss/"/>
     
   </entry>
   
   <entry>
     <title>TCP三次握手</title>
-    <link href="https://gitee.com/haoweige/my-Blog.io/posts/3d85440b.htm"/>
-    <id>https://gitee.com/haoweige/my-Blog.io/posts/3d85440b.htm</id>
+    <link href="https://haoweige.gitee.io/my-blog.io/posts/3d85440b.htm"/>
+    <id>https://haoweige.gitee.io/my-blog.io/posts/3d85440b.htm</id>
     <published>2021-10-06T13:12:25.000Z</published>
     <updated>2021-10-10T12:37:11.567Z</updated>
     
@@ -205,17 +205,17 @@
     
     
     
-    <category term="计算机网络" scheme="https://gitee.com/haoweige/my-Blog.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    <category term="计算机网络" scheme="https://haoweige.gitee.io/my-blog.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     
     
-    <category term="面试题" scheme="https://gitee.com/haoweige/my-Blog.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <category term="面试题" scheme="https://haoweige.gitee.io/my-blog.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
   </entry>
   
   <entry>
     <title>Hexo常用资源</title>
-    <link href="https://gitee.com/haoweige/my-Blog.io/posts/1a1dd6c0.htm"/>
-    <id>https://gitee.com/haoweige/my-Blog.io/posts/1a1dd6c0.htm</id>
+    <link href="https://haoweige.gitee.io/my-blog.io/posts/1a1dd6c0.htm"/>
+    <id>https://haoweige.gitee.io/my-blog.io/posts/1a1dd6c0.htm</id>
     <published>2021-10-06T12:59:48.000Z</published>
     <updated>2021-10-12T11:58:32.588Z</updated>
     
@@ -229,10 +229,10 @@
     
     
     
-    <category term="Hexo" scheme="https://gitee.com/haoweige/my-Blog.io/categories/Hexo/"/>
+    <category term="Hexo" scheme="https://haoweige.gitee.io/my-blog.io/categories/Hexo/"/>
     
     
-    <category term="Hexo资源" scheme="https://gitee.com/haoweige/my-Blog.io/tags/Hexo%E8%B5%84%E6%BA%90/"/>
+    <category term="Hexo资源" scheme="https://haoweige.gitee.io/my-blog.io/tags/Hexo%E8%B5%84%E6%BA%90/"/>
     
   </entry>
   
