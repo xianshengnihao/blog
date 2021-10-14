@@ -3,11 +3,11 @@
   <title>先生你好</title>
   
   <subtitle>先生你好の博客</subtitle>
-  <link href="https://xianshengnihao.github.io/blog/atom.xml" rel="self"/>
+  <link href="https://xianshengnihao.github.io/atom.xml" rel="self"/>
   
-  <link href="https://xianshengnihao.github.io/blog/"/>
+  <link href="https://xianshengnihao.github.io/"/>
   <updated>2021-10-13T08:36:58.140Z</updated>
-  <id>https://xianshengnihao.github.io/blog/</id>
+  <id>https://xianshengnihao.github.io/</id>
   
   <author>
     <name>先生你好</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>BeanDefinition详解</title>
-    <link href="https://xianshengnihao.github.io/blog/posts/b7e0d088.htm"/>
-    <id>https://xianshengnihao.github.io/blog/posts/b7e0d088.htm</id>
+    <link href="https://xianshengnihao.github.io/posts/b7e0d088.htm"/>
+    <id>https://xianshengnihao.github.io/posts/b7e0d088.htm</id>
     <published>2021-10-13T08:36:57.000Z</published>
     <updated>2021-10-13T08:36:58.140Z</updated>
     
@@ -31,12 +31,12 @@
   
   <entry>
     <title>二、xml方式初始话Spring容器详解</title>
-    <link href="https://xianshengnihao.github.io/blog/posts/68eba84b.htm"/>
-    <id>https://xianshengnihao.github.io/blog/posts/68eba84b.htm</id>
+    <link href="https://xianshengnihao.github.io/posts/68eba84b.htm"/>
+    <id>https://xianshengnihao.github.io/posts/68eba84b.htm</id>
     <published>2021-10-10T11:22:53.000Z</published>
     <updated>2021-10-13T14:17:25.063Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="1-加载Spring容器的核心方法"><a href="#1-加载Spring容器的核心方法" class="headerlink" title="[1] 加载Spring容器的核心方法"></a>[1] 加载Spring容器的核心方法</h3><p><code>AbstractApplicationContext.refresh()</code>方法是Spring容器启动过程中的核心方法，不论以何种方式加载Spring容器都必须执行该方法。</p><p><img src="https://p.pstatp.com/origin/pgc-image/c26d3f9a2c33496db6fb29649c0422ab"></p><h3 id="2-xml文件加载流程"><a href="#2-xml文件加载流程" class="headerlink" title="[2]xml文件加载流程"></a>[2]xml文件加载流程</h3><p><code>ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();</code>  该方法主要进行xml的解析工作，流程如下：</p><ol><li><strong>创建<code>XMLBeanDefinitionReader</code>对象</strong></li></ol><p><img src="https://p.pstatp.com/origin/pgc-image/3c68af85b34f475fb1c54c302f5544be"></p><ol start="2"><li><strong>通过 <code>XMLBeanDefinitionReader</code>对象加载配置文件</strong>  </li></ol><p><img src="https://590233ee4fbb3.cdn.sohucs.com/auto/1-auto5fec94fc6861496aa2a7ee31757bbb85"></p><ol start="3"><li> <strong>以流的方式将读取配置文件分装成Resource对象</strong></li></ol><p><img src="https://p.pstatp.com/origin/pgc-image/bf405b89f6da4bcb88f750075a3f3541"></p><ol start="4"><li><strong>将Resource对象转换为带编码的<code>EncodedResource</code>对象</strong></li></ol><p><img src="https://590233ee4fbb3.cdn.sohucs.com/auto/1-auto21eab775a3484c5e854b2587d7ab0f54"></p><ol start="5"><li><strong>将<code>EncodedResource</code>对象转换为<code>InputResource</code>对象</strong></li></ol><p><img src="https://590233ee4fbb3.cdn.sohucs.com/auto/1-autob60ff3d7cb444a6a98e55ed9636f8c09"></p><ol start="6"><li><strong>根据加载的配置文件把配置文件封装成 document 对象</strong>  </li></ol><p><img src="https://590233ee4fbb3.cdn.sohucs.com/auto/1-auto08bdc11dfe1946f787c353d1b062dd5d"></p><ol start="7"><li><strong>标签解析 <code>parseDefaultElement(ele, delegate)</code>负责常规标签解析  <code>delegate.parseCustomElement(ele)</code>负责自定义标签解析</strong>  </li></ol><p><img src="https://590233ee4fbb3.cdn.sohucs.com/auto/1-auto0857bf1ca710480fb406c562e0adf49e"></p><blockquote><p>重点：解析xml标签的最终目的是将Bean的信息封装成为一个BeanDefinition对象并且将BeanDefinition 对象添加到缓存中（BeanDefinitionMap）BeanDefinition即为Bean的定义信息，用来描述Bean的各项信息，比如Name，Class，需要依赖注入的属性等等。关于BeanDefinition请看 <a href="/blog/posts/b7e0d088.htm" title="BeanDefinition详细描述">BeanDefinition详细描述</a></p></blockquote><h3 id="3-自定义标签解析"><a href="#3-自定义标签解析" class="headerlink" title="[3] 自定义标签解析"></a>[3] 自定义标签解析</h3><ol><li><strong>获取自定义标签的namespace命名空间，例如：</strong></li></ol><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//http://www.springframework.org/schema/context</span><span class="token class-name">String</span> namespaceUri <span class="token operator">=</span> <span class="token function">getNamespaceURI</span><span class="token punctuation">(</span>ele<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ol start="2"><li><p><strong>根据命令空间获取 NamespaceHandler 对象</strong>。</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">NamespaceHandler</span> handler <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>readerContext<span class="token punctuation">.</span><span class="token function">getNamespaceHandlerResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>namespaceUri<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><blockquote><p>解析过程：</p><ul><li>解析spring.handlers文件中的数据并且将将namespace和NamespaceHandler简历映射关系</li><li>根据当前namespaceUri获取到到NamespaceHandler的权限的名称</li><li>使用反射的方式创建NamespaceHandler对象</li><li>调用NamespaceHandler对象的init方法</li></ul></blockquote><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//获取spring中所有jar包里面的 "META-INF/spring.handlers"文件，并且建立映射关系</span><span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> handlerMappings <span class="token operator">=</span> <span class="token function">getHandlerMappings</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//根据namespaceUri：http://www.springframework.org/schema/context，获取到这个命名空间的处理类</span><span class="token class-name">Object</span> handlerOrClassName <span class="token operator">=</span> handlerMappings<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>namespaceUri<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span> <span class="token punctuation">(</span>handlerOrClassName <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>handlerOrClassName <span class="token keyword">instanceof</span> <span class="token class-name">NamespaceHandler</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token class-name">NamespaceHandler</span><span class="token punctuation">)</span> handlerOrClassName<span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token keyword">else</span> <span class="token punctuation">&#123;</span><span class="token class-name">String</span> className <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span> handlerOrClassName<span class="token punctuation">;</span><span class="token keyword">try</span> <span class="token punctuation">&#123;</span><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> handlerClass <span class="token operator">=</span> <span class="token class-name">ClassUtils</span><span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span>className<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>classLoader<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token class-name">NamespaceHandler</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">isAssignableFrom</span><span class="token punctuation">(</span>handlerClass<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">FatalBeanException</span><span class="token punctuation">(</span><span class="token string">"Class ["</span> <span class="token operator">+</span> className <span class="token operator">+</span> <span class="token string">"] for namespace ["</span> <span class="token operator">+</span> namespaceUri <span class="token operator">+</span><span class="token string">"] does not implement the ["</span> <span class="token operator">+</span> <span class="token class-name">NamespaceHandler</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"] interface"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>        <span class="token comment">//反射创建NamespaceHandler对象</span><span class="token class-name">NamespaceHandler</span> namespaceHandler <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">NamespaceHandler</span><span class="token punctuation">)</span> <span class="token class-name">BeanUtils</span><span class="token punctuation">.</span><span class="token function">instantiateClass</span><span class="token punctuation">(</span>handlerClass<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//调用处理类的init方法，在init方法中完成标签元素解析类的注册</span>namespaceHandler<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>handlerMappings<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>namespaceUri<span class="token punctuation">,</span> namespaceHandler<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span> namespaceHandler<span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">ClassNotFoundException</span> ex<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">FatalBeanException</span><span class="token punctuation">(</span><span class="token string">"Could not find NamespaceHandler class ["</span> <span class="token operator">+</span> className <span class="token operator">+</span><span class="token string">"] for namespace ["</span> <span class="token operator">+</span> namespaceUri <span class="token operator">+</span> <span class="token string">"]"</span><span class="token punctuation">,</span> ex<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">LinkageError</span> err<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">FatalBeanException</span><span class="token punctuation">(</span><span class="token string">"Unresolvable class definition for NamespaceHandler class ["</span> <span class="token operator">+</span>className <span class="token operator">+</span> <span class="token string">"] for namespace ["</span> <span class="token operator">+</span> namespaceUri <span class="token operator">+</span> <span class="token string">"]"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p><strong>调用 parse 方法</strong></p><pre class="line-numbers language-java" data-language="java"><code class="language-java">handler<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>ele<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">ParserContext</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>readerContext<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">,</span> containingBd<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li></ol><blockquote><p>扩展：spring.handler文件其实就是 namespaceUri 和类的完整限定名的映射。下面为spring-context包下的spring.handlers</p></blockquote><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml">http\://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandlerhttp\://www.springframework.org/schema/jee=org.springframework.ejb.config.JeeNamespaceHandlerhttp\://www.springframework.org/schema/lang=org.springframework.scripting.config.LangNamespaceHandlerhttp\://www.springframework.org/schema/task=org.springframework.scheduling.config.TaskNamespaceHandlerhttp\://www.springframework.org/schema/cache=org.springframework.cache.config.CacheNamespaceHandler<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="4-XML整体流程图"><a href="#4-XML整体流程图" class="headerlink" title="[4] XML整体流程图"></a>[4] XML整体流程图</h3><p><img src="https://p.pstatp.com/origin/pgc-image/74f4964dd48a4303bd432a167770b99e"></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="1-加载Spring容器的核心方法"><a href="#1-加载Spring容器的核心方法" class="headerlink" title="[1] 加载Spring容器的核心方法"></a>[1] 加载Spring容器的核心方法</h3><p><code>AbstractApplicationContext.refresh()</code>方法是Spring容器启动过程中的核心方法，不论以何种方式加载Spring容器都必须执行该方法。</p><p><img src="https://p.pstatp.com/origin/pgc-image/c26d3f9a2c33496db6fb29649c0422ab"></p><h3 id="2-xml文件加载流程"><a href="#2-xml文件加载流程" class="headerlink" title="[2]xml文件加载流程"></a>[2]xml文件加载流程</h3><p><code>ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();</code>  该方法主要进行xml的解析工作，流程如下：</p><ol><li><strong>创建<code>XMLBeanDefinitionReader</code>对象</strong></li></ol><p><img src="https://p.pstatp.com/origin/pgc-image/3c68af85b34f475fb1c54c302f5544be"></p><ol start="2"><li><strong>通过 <code>XMLBeanDefinitionReader</code>对象加载配置文件</strong>  </li></ol><p><img src="https://590233ee4fbb3.cdn.sohucs.com/auto/1-auto5fec94fc6861496aa2a7ee31757bbb85"></p><ol start="3"><li> <strong>以流的方式将读取配置文件分装成Resource对象</strong></li></ol><p><img src="https://p.pstatp.com/origin/pgc-image/bf405b89f6da4bcb88f750075a3f3541"></p><ol start="4"><li><strong>将Resource对象转换为带编码的<code>EncodedResource</code>对象</strong></li></ol><p><img src="https://590233ee4fbb3.cdn.sohucs.com/auto/1-auto21eab775a3484c5e854b2587d7ab0f54"></p><ol start="5"><li><strong>将<code>EncodedResource</code>对象转换为<code>InputResource</code>对象</strong></li></ol><p><img src="https://590233ee4fbb3.cdn.sohucs.com/auto/1-autob60ff3d7cb444a6a98e55ed9636f8c09"></p><ol start="6"><li><strong>根据加载的配置文件把配置文件封装成 document 对象</strong>  </li></ol><p><img src="https://590233ee4fbb3.cdn.sohucs.com/auto/1-auto08bdc11dfe1946f787c353d1b062dd5d"></p><ol start="7"><li><strong>标签解析 <code>parseDefaultElement(ele, delegate)</code>负责常规标签解析  <code>delegate.parseCustomElement(ele)</code>负责自定义标签解析</strong>  </li></ol><p><img src="https://590233ee4fbb3.cdn.sohucs.com/auto/1-auto0857bf1ca710480fb406c562e0adf49e"></p><blockquote><p>重点：解析xml标签的最终目的是将Bean的信息封装成为一个BeanDefinition对象并且将BeanDefinition 对象添加到缓存中（BeanDefinitionMap）BeanDefinition即为Bean的定义信息，用来描述Bean的各项信息，比如Name，Class，需要依赖注入的属性等等。关于BeanDefinition请看 <a href="/posts/b7e0d088.htm" title="BeanDefinition详细描述">BeanDefinition详细描述</a></p></blockquote><h3 id="3-自定义标签解析"><a href="#3-自定义标签解析" class="headerlink" title="[3] 自定义标签解析"></a>[3] 自定义标签解析</h3><ol><li><strong>获取自定义标签的namespace命名空间，例如：</strong></li></ol><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//http://www.springframework.org/schema/context</span><span class="token class-name">String</span> namespaceUri <span class="token operator">=</span> <span class="token function">getNamespaceURI</span><span class="token punctuation">(</span>ele<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ol start="2"><li><p><strong>根据命令空间获取 NamespaceHandler 对象</strong>。</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">NamespaceHandler</span> handler <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>readerContext<span class="token punctuation">.</span><span class="token function">getNamespaceHandlerResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>namespaceUri<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><blockquote><p>解析过程：</p><ul><li>解析spring.handlers文件中的数据并且将将namespace和NamespaceHandler简历映射关系</li><li>根据当前namespaceUri获取到到NamespaceHandler的权限的名称</li><li>使用反射的方式创建NamespaceHandler对象</li><li>调用NamespaceHandler对象的init方法</li></ul></blockquote><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//获取spring中所有jar包里面的 "META-INF/spring.handlers"文件，并且建立映射关系</span><span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> handlerMappings <span class="token operator">=</span> <span class="token function">getHandlerMappings</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//根据namespaceUri：http://www.springframework.org/schema/context，获取到这个命名空间的处理类</span><span class="token class-name">Object</span> handlerOrClassName <span class="token operator">=</span> handlerMappings<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>namespaceUri<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span> <span class="token punctuation">(</span>handlerOrClassName <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>handlerOrClassName <span class="token keyword">instanceof</span> <span class="token class-name">NamespaceHandler</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token class-name">NamespaceHandler</span><span class="token punctuation">)</span> handlerOrClassName<span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token keyword">else</span> <span class="token punctuation">&#123;</span><span class="token class-name">String</span> className <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span> handlerOrClassName<span class="token punctuation">;</span><span class="token keyword">try</span> <span class="token punctuation">&#123;</span><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> handlerClass <span class="token operator">=</span> <span class="token class-name">ClassUtils</span><span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span>className<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>classLoader<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token class-name">NamespaceHandler</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">isAssignableFrom</span><span class="token punctuation">(</span>handlerClass<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">FatalBeanException</span><span class="token punctuation">(</span><span class="token string">"Class ["</span> <span class="token operator">+</span> className <span class="token operator">+</span> <span class="token string">"] for namespace ["</span> <span class="token operator">+</span> namespaceUri <span class="token operator">+</span><span class="token string">"] does not implement the ["</span> <span class="token operator">+</span> <span class="token class-name">NamespaceHandler</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"] interface"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>        <span class="token comment">//反射创建NamespaceHandler对象</span><span class="token class-name">NamespaceHandler</span> namespaceHandler <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">NamespaceHandler</span><span class="token punctuation">)</span> <span class="token class-name">BeanUtils</span><span class="token punctuation">.</span><span class="token function">instantiateClass</span><span class="token punctuation">(</span>handlerClass<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//调用处理类的init方法，在init方法中完成标签元素解析类的注册</span>namespaceHandler<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>handlerMappings<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>namespaceUri<span class="token punctuation">,</span> namespaceHandler<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span> namespaceHandler<span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">ClassNotFoundException</span> ex<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">FatalBeanException</span><span class="token punctuation">(</span><span class="token string">"Could not find NamespaceHandler class ["</span> <span class="token operator">+</span> className <span class="token operator">+</span><span class="token string">"] for namespace ["</span> <span class="token operator">+</span> namespaceUri <span class="token operator">+</span> <span class="token string">"]"</span><span class="token punctuation">,</span> ex<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">LinkageError</span> err<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">FatalBeanException</span><span class="token punctuation">(</span><span class="token string">"Unresolvable class definition for NamespaceHandler class ["</span> <span class="token operator">+</span>className <span class="token operator">+</span> <span class="token string">"] for namespace ["</span> <span class="token operator">+</span> namespaceUri <span class="token operator">+</span> <span class="token string">"]"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p><strong>调用 parse 方法</strong></p><pre class="line-numbers language-java" data-language="java"><code class="language-java">handler<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>ele<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">ParserContext</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>readerContext<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">,</span> containingBd<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li></ol><blockquote><p>扩展：spring.handler文件其实就是 namespaceUri 和类的完整限定名的映射。下面为spring-context包下的spring.handlers</p></blockquote><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml">http\://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandlerhttp\://www.springframework.org/schema/jee=org.springframework.ejb.config.JeeNamespaceHandlerhttp\://www.springframework.org/schema/lang=org.springframework.scripting.config.LangNamespaceHandlerhttp\://www.springframework.org/schema/task=org.springframework.scheduling.config.TaskNamespaceHandlerhttp\://www.springframework.org/schema/cache=org.springframework.cache.config.CacheNamespaceHandler<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="4-XML整体流程图"><a href="#4-XML整体流程图" class="headerlink" title="[4] XML整体流程图"></a>[4] XML整体流程图</h3><p><img src="https://p.pstatp.com/origin/pgc-image/74f4964dd48a4303bd432a167770b99e"></p>]]></content>
     
     
       
@@ -46,21 +46,21 @@
     
     
     
-    <category term="Spring" scheme="https://xianshengnihao.github.io/blog/categories/Spring/"/>
+    <category term="Spring" scheme="https://xianshengnihao.github.io/categories/Spring/"/>
     
-    <category term="源码" scheme="https://xianshengnihao.github.io/blog/categories/Spring/%E6%BA%90%E7%A0%81/"/>
+    <category term="源码" scheme="https://xianshengnihao.github.io/categories/Spring/%E6%BA%90%E7%A0%81/"/>
     
     
-    <category term="Spring容器初始化" scheme="https://xianshengnihao.github.io/blog/tags/Spring%E5%AE%B9%E5%99%A8%E5%88%9D%E5%A7%8B%E5%8C%96/"/>
+    <category term="Spring容器初始化" scheme="https://xianshengnihao.github.io/tags/Spring%E5%AE%B9%E5%99%A8%E5%88%9D%E5%A7%8B%E5%8C%96/"/>
     
-    <category term="xml方式" scheme="https://xianshengnihao.github.io/blog/tags/xml%E6%96%B9%E5%BC%8F/"/>
+    <category term="xml方式" scheme="https://xianshengnihao.github.io/tags/xml%E6%96%B9%E5%BC%8F/"/>
     
   </entry>
   
   <entry>
     <title>一、Spring入口和xml解析</title>
-    <link href="https://xianshengnihao.github.io/blog/posts/374bf9da.htm"/>
-    <id>https://xianshengnihao.github.io/blog/posts/374bf9da.htm</id>
+    <link href="https://xianshengnihao.github.io/posts/374bf9da.htm"/>
+    <id>https://xianshengnihao.github.io/posts/374bf9da.htm</id>
     <published>2021-10-08T09:28:05.000Z</published>
     <updated>2021-10-10T12:37:11.574Z</updated>
     
@@ -75,23 +75,23 @@
     
     
     
-    <category term="Spring" scheme="https://xianshengnihao.github.io/blog/categories/Spring/"/>
+    <category term="Spring" scheme="https://xianshengnihao.github.io/categories/Spring/"/>
     
-    <category term="源码" scheme="https://xianshengnihao.github.io/blog/categories/Spring/%E6%BA%90%E7%A0%81/"/>
+    <category term="源码" scheme="https://xianshengnihao.github.io/categories/Spring/%E6%BA%90%E7%A0%81/"/>
     
     
-    <category term="Spring源码" scheme="https://xianshengnihao.github.io/blog/tags/Spring%E6%BA%90%E7%A0%81/"/>
+    <category term="Spring源码" scheme="https://xianshengnihao.github.io/tags/Spring%E6%BA%90%E7%A0%81/"/>
     
-    <category term="Spring简介" scheme="https://xianshengnihao.github.io/blog/tags/Spring%E7%AE%80%E4%BB%8B/"/>
+    <category term="Spring简介" scheme="https://xianshengnihao.github.io/tags/Spring%E7%AE%80%E4%BB%8B/"/>
     
-    <category term="Spring源码下载" scheme="https://xianshengnihao.github.io/blog/tags/Spring%E6%BA%90%E7%A0%81%E4%B8%8B%E8%BD%BD/"/>
+    <category term="Spring源码下载" scheme="https://xianshengnihao.github.io/tags/Spring%E6%BA%90%E7%A0%81%E4%B8%8B%E8%BD%BD/"/>
     
   </entry>
   
   <entry>
     <title>Hexo＆matery个性化修改</title>
-    <link href="https://xianshengnihao.github.io/blog/posts/21558651.htm"/>
-    <id>https://xianshengnihao.github.io/blog/posts/21558651.htm</id>
+    <link href="https://xianshengnihao.github.io/posts/21558651.htm"/>
+    <id>https://xianshengnihao.github.io/posts/21558651.htm</id>
     <published>2021-10-07T14:11:19.000Z</published>
     <updated>2021-10-13T14:25:07.125Z</updated>
     
@@ -105,19 +105,19 @@
     
     
     
-    <category term="Hexo" scheme="https://xianshengnihao.github.io/blog/categories/Hexo/"/>
+    <category term="Hexo" scheme="https://xianshengnihao.github.io/categories/Hexo/"/>
     
-    <category term="matery" scheme="https://xianshengnihao.github.io/blog/categories/Hexo/matery/"/>
+    <category term="matery" scheme="https://xianshengnihao.github.io/categories/Hexo/matery/"/>
     
     
-    <category term="matery个性化修改" scheme="https://xianshengnihao.github.io/blog/tags/matery%E4%B8%AA%E6%80%A7%E5%8C%96%E4%BF%AE%E6%94%B9/"/>
+    <category term="matery个性化修改" scheme="https://xianshengnihao.github.io/tags/matery%E4%B8%AA%E6%80%A7%E5%8C%96%E4%BF%AE%E6%94%B9/"/>
     
   </entry>
   
   <entry>
     <title>第三方平台管理端</title>
-    <link href="https://xianshengnihao.github.io/blog/posts/b62742e1.htm"/>
-    <id>https://xianshengnihao.github.io/blog/posts/b62742e1.htm</id>
+    <link href="https://xianshengnihao.github.io/posts/b62742e1.htm"/>
+    <id>https://xianshengnihao.github.io/posts/b62742e1.htm</id>
     <published>2021-10-07T13:48:35.000Z</published>
     <updated>2021-10-10T12:37:11.575Z</updated>
     
@@ -132,17 +132,17 @@
     
     
     
-    <category term="加密文章" scheme="https://xianshengnihao.github.io/blog/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/"/>
+    <category term="加密文章" scheme="https://xianshengnihao.github.io/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/"/>
     
     
-    <category term="加密文章" scheme="https://xianshengnihao.github.io/blog/tags/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/"/>
+    <category term="加密文章" scheme="https://xianshengnihao.github.io/tags/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/"/>
     
   </entry>
   
   <entry>
     <title>文章加密测试</title>
-    <link href="https://xianshengnihao.github.io/blog/posts/26ea2038.htm"/>
-    <id>https://xianshengnihao.github.io/blog/posts/26ea2038.htm</id>
+    <link href="https://xianshengnihao.github.io/posts/26ea2038.htm"/>
+    <id>https://xianshengnihao.github.io/posts/26ea2038.htm</id>
     <published>2021-10-07T13:45:28.000Z</published>
     <updated>2021-10-10T12:37:11.572Z</updated>
     
@@ -157,17 +157,17 @@
     
     
     
-    <category term="加密文章" scheme="https://xianshengnihao.github.io/blog/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/"/>
+    <category term="加密文章" scheme="https://xianshengnihao.github.io/categories/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0/"/>
     
     
-    <category term="加密文章测试" scheme="https://xianshengnihao.github.io/blog/tags/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0%E6%B5%8B%E8%AF%95/"/>
+    <category term="加密文章测试" scheme="https://xianshengnihao.github.io/tags/%E5%8A%A0%E5%AF%86%E6%96%87%E7%AB%A0%E6%B5%8B%E8%AF%95/"/>
     
   </entry>
   
   <entry>
     <title>添加Rss订阅</title>
-    <link href="https://xianshengnihao.github.io/blog/posts/ebe2c743.htm"/>
-    <id>https://xianshengnihao.github.io/blog/posts/ebe2c743.htm</id>
+    <link href="https://xianshengnihao.github.io/posts/ebe2c743.htm"/>
+    <id>https://xianshengnihao.github.io/posts/ebe2c743.htm</id>
     <published>2021-10-07T13:02:25.000Z</published>
     <updated>2021-10-10T12:37:11.573Z</updated>
     
@@ -181,17 +181,17 @@
     
     
     
-    <category term="Hexo" scheme="https://xianshengnihao.github.io/blog/categories/Hexo/"/>
+    <category term="Hexo" scheme="https://xianshengnihao.github.io/categories/Hexo/"/>
     
     
-    <category term="Rss" scheme="https://xianshengnihao.github.io/blog/tags/Rss/"/>
+    <category term="Rss" scheme="https://xianshengnihao.github.io/tags/Rss/"/>
     
   </entry>
   
   <entry>
     <title>TCP三次握手</title>
-    <link href="https://xianshengnihao.github.io/blog/posts/3d85440b.htm"/>
-    <id>https://xianshengnihao.github.io/blog/posts/3d85440b.htm</id>
+    <link href="https://xianshengnihao.github.io/posts/3d85440b.htm"/>
+    <id>https://xianshengnihao.github.io/posts/3d85440b.htm</id>
     <published>2021-10-06T13:12:25.000Z</published>
     <updated>2021-10-10T12:37:11.567Z</updated>
     
@@ -205,17 +205,17 @@
     
     
     
-    <category term="计算机网络" scheme="https://xianshengnihao.github.io/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    <category term="计算机网络" scheme="https://xianshengnihao.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     
     
-    <category term="面试题" scheme="https://xianshengnihao.github.io/blog/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <category term="面试题" scheme="https://xianshengnihao.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
     
   </entry>
   
   <entry>
     <title>Hexo常用资源</title>
-    <link href="https://xianshengnihao.github.io/blog/posts/1a1dd6c0.htm"/>
-    <id>https://xianshengnihao.github.io/blog/posts/1a1dd6c0.htm</id>
+    <link href="https://xianshengnihao.github.io/posts/1a1dd6c0.htm"/>
+    <id>https://xianshengnihao.github.io/posts/1a1dd6c0.htm</id>
     <published>2021-10-06T12:59:48.000Z</published>
     <updated>2021-10-13T15:29:25.871Z</updated>
     
@@ -229,10 +229,10 @@
     
     
     
-    <category term="Hexo" scheme="https://xianshengnihao.github.io/blog/categories/Hexo/"/>
+    <category term="Hexo" scheme="https://xianshengnihao.github.io/categories/Hexo/"/>
     
     
-    <category term="Hexo资源" scheme="https://xianshengnihao.github.io/blog/tags/Hexo%E8%B5%84%E6%BA%90/"/>
+    <category term="Hexo资源" scheme="https://xianshengnihao.github.io/tags/Hexo%E8%B5%84%E6%BA%90/"/>
     
   </entry>
   
